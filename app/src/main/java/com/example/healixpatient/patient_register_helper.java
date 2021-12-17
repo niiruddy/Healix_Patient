@@ -15,22 +15,21 @@ public class patient_register_helper {
         private String Meds;
         private String Medcon;
 
+public patient_register_helper(){
 
 
-        public patient_register_helper(String fullName, String age, String phone_num, String gender, String email, String pass, String height, String weight, String allergy, String meds, String medcon) {
+}
+
+        public patient_register_helper(String fullName, String age, String phone_num, String gender,  String height, String weight, String allergy,String meds,String medcon) {
                 FullName = fullName;
                 Age = age;
                 Phone_num = phone_num;
                 Gender = gender;
-                Email = email;
-                Pass = pass;
                 Height = height;
                 Weight = weight;
                 Allergy = allergy;
                 Meds = meds;
                 Medcon = medcon;
-
-
         }
 
         public String getFullName() {

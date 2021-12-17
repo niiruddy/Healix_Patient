@@ -146,13 +146,16 @@ public class Patient_Signup_form extends AppCompatActivity {
 
     private void SignInUser(String fullName,String age, String phone_num, String gender, String height, String weight, String allergy, String medcon, String meds) {
 
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReferenceFromUrl("https://app-healix-default-rtdb.firebaseio.com").child("Patients").child("Profile_details");
+
+        /*FirebaseAuth mAuth = FirebaseAuth.getInstance();
         final String email = getIntent().getStringExtra("email");
         final String pass = getIntent().getStringExtra("pass");
-        final String conPass = getIntent().getStringExtra("conPass");
+        final String conPass = getIntent().getStringExtra("conPass");*/
 
 
-        mAuth.createUserWithEmailAndPassword(email, conPass).addOnCompleteListener(Patient_Signup_form.this, task ->{
+       /* mAuth.createUserWithEmailAndPassword(email, conPass).addOnCompleteListener(Patient_Signup_form.this, task ->{
            if(task.isSuccessful()){
                Toast.makeText(Patient_Signup_form.this, "SignUp Successful", Toast.LENGTH_SHORT).show();
                DatabaseReference ref = FirebaseDatabase.getInstance().getReferenceFromUrl("https://app-healix-default-rtdb.firebaseio.com").child("Patients").child("Profile_details");
@@ -170,9 +173,8 @@ public class Patient_Signup_form extends AppCompatActivity {
 
                    }
                });
-
-               patient_register_helper helper = new patient_register_helper(fullName, age,  phone_num, gender, email,
-                       pass, height, weight, allergy, meds,  medcon);
+*/
+               patient_register_helper helper = new patient_register_helper(fullName, age,  phone_num, gender, height, weight, allergy, meds,  medcon);
                ref.child(String.valueOf(sendid + 1)).setValue(helper);
 
                Intent intent = new Intent(Patient_Signup_form.this,Patient_Dashboard.class);
@@ -183,15 +185,14 @@ public class Patient_Signup_form extends AppCompatActivity {
                finish();
 
 
-           }else{
-               Toast.makeText(Patient_Signup_form.this, Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+           }/*else{
+               Toast.makeText(Patient_Signup_form.this, ""+task.getException(), Toast.LENGTH_SHORT).show();
                Name.requestFocus();
            }
 
            }
 
 
-        );
+        );*/
 
     }
-}
